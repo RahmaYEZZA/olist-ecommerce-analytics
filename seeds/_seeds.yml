@@ -1,0 +1,7 @@
+version: 2
+seeds:
+  - name: brazil_states
+    description: Brazilian state codes with their full name and region (used for maps in Tableau).
+    columns:
+      - name: state_code
+        data_tests: [unique, not_null]

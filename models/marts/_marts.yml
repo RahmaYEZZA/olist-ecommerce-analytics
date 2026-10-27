@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: >
+      One row per order. order_value = items + freight. is_valid_sale excludes
+      canceled and unavailable orders. is_late compares delivery with the date promised to the customer.
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_unique_id
+        data_tests: [not_null]
+      - name: order_value
+        data_tests: [not_null]
+
+  - name: dim_customers
+    columns:
+      - name: customer_unique_id
+        data_tests: [unique, not_null]
+
+  - name: mart_monthly_kpis
+    columns:
+      - name: order_month
+        data_tests: [unique, not_null]
+
+  - name: mart_delivery_by_state
+    columns:
+      - name: customer_state
+        data_tests: [unique, not_null]
+      - name: region
+        data_tests: [not_null]
